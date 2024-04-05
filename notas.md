@@ -1,6 +1,6 @@
 #1:
 
-In stage 1, an initial exploration of the DataFrames "Activity" and "Loyalty" was conducted. The types of data in each column, the presence of null values and inconsistencies were observed. The columns "Points Redeemed", "Flights with Companions", "Dollar Cost Points Redeemed", "Salary", "Cancellation Year" and "Cancellation Month" were highlighted as important to review in future steps. Null values were detected in the columns "Salary" and "Cancellation Year/Month". The shape of both DataFrames was verified and descriptive statistics were collected. It was decided to join both DataFrames by using the column "Loyalty Number" because it is shared by both and because we understand that, in addition, it is a unique data that identifies each passenger.
+In stage 1, an initial exploration of the DataFrames "Activity" and "Loyalty" was conducted. The types of data in each column, the presence of null values and inconsistencies were observed. The columns "Points Redeemed", "Flights with Companions", "Dollar Cost Points Redeemed", "Salary", "Cancellation Year" and "Cancellation Month" were highlighted as important to review in future steps. Null values were detected in the columns "Salary" and "Cancellation Year/Month". The shape of both DataFrames was verified and descriptive statistics were collected. 
 
 Main Activity data:
 
@@ -10,7 +10,7 @@ Main Activity data:
     Relevant columns: "Points Redeemed", "Flights with Companions", "Dollar Cost Points Redeemed".
     Remarks:
     The first 5 rows of the columns "Points Redeemed", "Flights with Companions" and "Dollar Cost Points Redeemed" have value 0. Whether this is an error, origin or pattern will be analysed in detail.
-    There're 1864 values duplicated.
+    There're 1864 values duplicated. That were remove. 
 
 
 Main "Loyalty" data:
@@ -22,17 +22,23 @@ Main "Loyalty" data:
     The column "Salary" has many null values and could be converted to integer. As well as ther is a negative salary that must be transformed.
     The columns "Cancellation Year" and "Cancellation Month" have null values and are configured as floats, they should be integers.
 
-First of all we filter out the columns that have nulls, and display on the screen the percentage of nulls they hold. It is shown that the columns "Cancellation Year/Month" have a high percentage of nulls. On the other hand, "Salary" contains approximately 25% of nulls. In order to review one by one those columns the steps mentioned below were followed. Columns regarding cancellation have been processed together.
-Salary column: 
+The first thing to consider is the use and the information collected in both documents. In a first approach it is clear that 'Activity' tracks the activity of each customer, appearing at least 48 each Loyalty Number, the information collected in this DataFrame allows us to keep the activity updated for 'Flights Booked', 'Flights with Companions' and 'Total Flights', these columns are a summation of the previous values recording the flights taken by year and month. 
 
-1 - We turn positive the data that was negative. 
-2 - We observe the data using a boxplot and a violinplot that allow us to see the concentration and distribution of the data. In this way we see that there are a large number of outliers.
-3 - Explore the main statics in order to fill the nulls with the most suiatble data. As there is high number of outliers a comparasssion of KNN and Iterative Imputer was made, comparing both with the original column values. 
-4 - Filling nulls with becasuse blabla
+When merging information, we find duplicate values in 'Loyalty Number', as this can alter processing calculations. The null entries in 'Salary' are corrected before the documents are merged. These were the steps taken: 
 
+1 - We turn positive the negative data. 
+2 - We observe the data using a boxplot and a violinplot, which enable us to see the concentration and distribution of the data. In this way we can see that there are a large number of outliers.
+3 - Examine the main statistic to fill the nulls with the most suitable data. As there are a large number of outliers, a comparison was made with the Iterative Imputer, comparing both with the original column values.  
+4 - Filling nulls with mean as the resoult is the same rather using Iterative Imputer or not. 
 
-"Cancellation Year" & "Cancellation Month" column:
+Note: Other methods like KNN Imputer could also be a good approach to have more information to compare with, but it takes more time to process the data and there is a time limit for this project. Nevertheless, the code appears as commented, so if time or even computer characteristics are not a problem, we can use this method to compare as well. 
 
-Due to the high number of nulls, it was decided in this case to remove both columns. 
+"Cancellation year" & "Cancellation month" columns:
 
-This information may be of high value to the business, so a review of the process used to obtain this data to see if there are any errors in obtaining or updating this information would be highly recommended, as it may help to provide further information on customer behaviour. It would also be nice to investigate why these customers are cancelling their subscription. 
+Due to the high number of nulls, it was decided in this case to remove both of these columns. 
+
+This information can be of huge value to the business, so a review of the process used to obtain this data to see if there are any errors in obtaining or updating this information would be highly recommended, as it may help to provide further information on customer behaviour. It would also be beneficial to investigate why these customers are cancelling their subscriptions. 
+
+It was decided to merge the two DataFrames using the "Loyalty Number" column because it is common to both and because we understand that it is also a unique identifier for each passenger. A new csv collecting the information of both was created.
+
+#2
