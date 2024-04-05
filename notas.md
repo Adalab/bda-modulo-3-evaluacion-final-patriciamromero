@@ -11,6 +11,7 @@ Main Activity data:
     Remarks:
     The first 5 rows of the columns "Points Redeemed", "Flights with Companions" and "Dollar Cost Points Redeemed" have value 0. Whether this is an error, origin or pattern will be analysed in detail.
     There're 1864 values duplicated. That were remove. 
+    "Points Accumulated" has turned into integer. 
 
 
 Main "Loyalty" data:
@@ -42,3 +43,6 @@ This information can be of huge value to the business, so a review of the proces
 It was decided to merge the two DataFrames using the "Loyalty Number" column because it is common to both and because we understand that it is also a unique identifier for each passenger. A new csv collecting the information of both was created.
 
 #2
+1 - 
+Observing the bar plotcreated we can confirm that there is a clear pattern for both years. The books increased significantlly for months 5 to 8 (May to August, both included) there's also a peak in December and in March. 
+2 - Initially we can confirm that there is a relation between both columns as more distance more points accumulated. 
