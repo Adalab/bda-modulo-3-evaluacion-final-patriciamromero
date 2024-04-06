@@ -29,6 +29,12 @@ t.filtering_nulls(loyalty)
 # %%
 loyalty["Salary"] = loyalty["Salary"].abs()
 # %%
+activity["Points Accumulated"] = activity["Points Accumulated"].astype(int)
+
+#%% 
+loyalty = loyalty.drop(columns=["Cancellation Year", "Cancellation Month"])
+
+#%%
 fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (20, 5))
 
 # Creates a boxplot on the first subplot
