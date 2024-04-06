@@ -1,0 +1,59 @@
+#%%
+from src.stage import extract as e
+from src.stage import transform_clean as t
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.impute import SimpleImputer
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.impute import KNNImputer
+
+# %%
+activity = e.open_csv("src/files/Customer Flight Activity.csv")
+loyalty = e.open_csv("src/files/Customer Loyalty History.csv")
+# %%
+e.explore_df(activity)
+e.explore_df(loyalty)
+# %%
+e.df_information(activity)
+e.df_information(loyalty)
+# %%
+e.explore_columns(activity)
+e.explore_columns(loyalty)
+# %%
+activity = activity.drop_duplicates()
+# %%
+t.filtering_nulls(activity)
+# %%
+t.filtering_nulls(loyalty)
+# %%
+loyalty["Salary"] = loyalty["Salary"].abs()
+# %%
+fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (20, 5))
+
+# Creates a boxplot on the first subplot
+sns.boxplot(y = "Salary",
+            data = loyalty, 
+            width = 0.5, 
+            color = "turquoise", 
+            ax = axes[0])
+
+axes[0].set_title("Boxplot usando la columna `salary'")
+
+
+
+# Creates a violinplot on the second subplot
+sns.violinplot(y = "Salary",
+               data = loyalty, 
+               width = 0.5, 
+               color = "turquoise", 
+               linewidth = 2, 
+               ax = axes[1])
+
+
+axes[1].set_title("Violinplot usando la columna `salary'")
+# %%
+loyal_copy = loyalty.copy()
+# %%
+t.iterative_imputer(loyal_copy,'Salary')
+# %%

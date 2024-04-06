@@ -1,21 +1,3 @@
-#%%
-# Function to check if a value can be converted to a specific data type
-def is_convertible(value, dtype):
-  """
-  Checks if a value can be converted to the specified data type without errors.
-
-  Args:
-      value: The value to be converted.
-      dtype (str): The target data type (e.g., "float", "int").
-
-  Returns:
-      bool: True if the value can be converted, False otherwise.
-  """
-  try:
-    pd.to_numeric(value)  # Attempt conversion without specifying downcast
-    return True
-  except:
-    return False  # Conversion failed
 
 # %%
 # Function to convert a column to a numeric data type (float or integer)
