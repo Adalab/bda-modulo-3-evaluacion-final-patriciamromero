@@ -1,5 +1,61 @@
 
-# %%
+# %%import matplotlib.pyplot as plt
+#%%
+# Import libraries for data processing
+# -----------------------------------------------------------------------
+import pandas as pd  # Pandas for data manipulation and analysis in Python.
+
+# Optional libraries (can be removed if not used):
+# -----------------------------------------------------------------------
+# Import libraries for web scraping and data manipulation
+# from bs4 import BeautifulSoup
+# import requests
+
+# Import libraries for web browser automation with Selenium
+# from selenium import webdriver
+# from webdriver_manager.chrome import ChromeDriverManager
+
+# ChromeDriverManager manages the installation of the Chrome driver
+
+# from selenium.webdriver.common.keys import Keys  # Keys is useful for simulating keyboard events in Selenium.
+# from selenium.webdriver.support.ui import Select  # Select is used to interact with <select> elements on web pages.
+
+# Import libraries for pausing execution
+# -----------------------------------------------------------------------
+# from time import sleep  # Sleep is used to pause the program execution for a number of seconds.
+
+# Configurations
+# -----------------------------------------------------------------------
+pd.set_option('display.max_columns', None)  # Set a Pandas option to show all columns of a DataFrame.
+
+import warnings
+warnings.filterwarnings("ignore")
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+
+pd.options.display.max_columns = None
+
+pd.set_option('display.float_format', '{:.2f}'.format)
+
+# Tratamiento de datos
+# -----------------------------------------------------------------------
+import pandas as pd
+import numpy as np
+
+# Imputación de nulos usando métodos avanzados estadísticos
+# -----------------------------------------------------------------------
+from sklearn.impute import SimpleImputer
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.impute import KNNImputer
+
+# ------------------------------------------------------------------------------
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+
+
 # Function to convert a column to a numeric data type (float or integer)
 def convert_to_numeric(df, column, target_dtype="float"):
   """
@@ -71,21 +127,14 @@ def iterative_imputer(df, column):
   Returns:
       pd.Series: The imputed column.
   """
-
-  # Create an iterative imputer with 20 iterations and a random state of 42
   imputer_iterative = IterativeImputer(max_iter = 20, random_state = 42)
 
-  # Fit and transform the data in the column
-  imputer_iterative_imputed = imputer_iterative.fit_transform(df[column])
+ # ajustamos y tranformamos los datos
+  imputer_iterative_imputado = imputer_iterative.fit_transform(df[[column]])
 
-  # Check that the output is an array
-  assert isinstance(imputer_iterative_imputed, np.ndarray), "Output is not an array."
+# comprobamos que es lo que nos devuelve, que en este caso es un array también
+  return imputer_iterative_imputado
 
-  # Update the column with the imputed values
-  df[column] = imputer_iterative_imputed
-
-  # Return the imputed column
-  return df[column]
 # %%
 def standarize_column_names(df):
   """

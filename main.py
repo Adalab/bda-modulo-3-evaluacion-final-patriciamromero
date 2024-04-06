@@ -3,10 +3,6 @@ from src.stage import extract as e
 from src.stage import transform_clean as t
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.impute import SimpleImputer
-from sklearn.experimental import enable_iterative_imputer
-from sklearn.impute import IterativeImputer
-from sklearn.impute import KNNImputer
 
 # %%
 activity = e.open_csv("src/files/Customer Flight Activity.csv")
@@ -61,5 +57,16 @@ axes[1].set_title("Violinplot usando la columna `salary'")
 # %%
 loyal_copy = loyalty.copy()
 # %%
-t.iterative_imputer(loyal_copy,'Salary')
+loyal_copy['Salary_imputer'] = t.iterative_imputer(loyal_copy,'Salary')
+# %%
+# %%
+loyal_copy.describe()[["Salary","Salary_imputer"]].T
+# %%
+loyalty["Salary"] = (loyalty["Salary"].fillna(loyalty["Salary"].mean())).astype(int)
+
+# %%
+df_all = activity.merge(loyalty, how='inner', on= "Loyalty Number")
+
+# %%
+t.standarize_column_names(df_all)
 # %%
