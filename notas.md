@@ -46,3 +46,5 @@ It was decided to merge the two DataFrames using the "Loyalty Number" column bec
 1 - 
 Observing the bar plotcreated we can confirm that there is a clear pattern for both years. The books increased significantlly for months 5 to 8 (May to August, both included) there's also a peak in December and in March. 
 2 - Initially we can confirm that there is a relation between both columns as more distance more points accumulated. 
+
+#3
