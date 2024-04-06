@@ -40,8 +40,7 @@ Due to the high number of nulls, it was decided in this case to remove both of t
 
 This information can be of huge value to the business, so a review of the process used to obtain this data to see if there are any errors in obtaining or updating this information would be highly recommended, as it may help to provide further information on customer behaviour. It would also be beneficial to investigate why these customers are cancelling their subscriptions. 
 
-It was decided to merge the two DataFrames using the "Loyalty Number" column because it is common to both and because we understand that it is also a unique identifier for each passenger. A new csv collecting the information of both was created.
-
+It was decided to merge the two DataFrames using the "Loyalty Number" column because it is common to both and because we understand that it is also a unique identifier for each passenger. A consolidation of the columns aesthetic was made. 
 #2
 1 - 
 Observing the bar plotcreated we can confirm that there is a clear pattern for both years. The books increased significantlly for months 5 to 8 (May to August, both included) there's also a peak in December and in March. 
