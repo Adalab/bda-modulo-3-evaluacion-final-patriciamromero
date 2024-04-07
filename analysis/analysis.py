@@ -20,16 +20,16 @@ print(data.head())
 plt.figure(figsize=(10, 6))
 
 # Create bar chart to compare flights booked by month and year
-sns.barplot(data=data, x='Month', y='Flights Booked', hue='Year', palette=palette)
+sns.barplot(data=data, x='month', y='flights_booked', hue='year', palette=palette)
 plt.title('Comparassion of flights booked each month years 2017 and 2018')
-plt.xlabel('Month')
+plt.xlabel('month')
 plt.ylabel('Quatinty')
 plt.legend(title='Year')
 plt.show()
 
 #%%
 # Create scatterplot to visualize Points Accumulated vs. Distance
-sns.scatterplot(data["Points Accumulated"], data["Distance"], palette=palette)
+sns.scatterplot(data["points_accumulated"], data["distance"], palette=palette)
 plt.title("Scatterplot of Points Accumulated vs. Distance")
 plt.xlabel("Points Accumulated")
 plt.ylabel("Distance")
@@ -37,7 +37,7 @@ plt.show()
 
 #%%
 # Create countplot to show distribution of provinces
-sns.countplot(data["Province"], palette=palette)
+sns.countplot(data["province"], palette=palette)
 
 # Rotate province labels for better readability
 plt.xticks(rotation=90)
@@ -49,7 +49,7 @@ plt.show()
 
 #%%
 # Create bar chart to visualize average salary by education level
-sns.barplot(x="Education", y="Salary", data=data, palette=palette)
+sns.barplot(x="education", y="salary", data=data, palette=palette)
 
 # Rotate education level labels for better readability
 plt.xticks(rotation=45)
@@ -61,15 +61,15 @@ plt.show()
 
 #%%
 # Count loyalty card holders by loyalty card type
-df_cards = data.groupby("Loyalty Card")["Loyalty Number"].count().reset_index()
+df_cards = data.groupby("loyalty_card")["loyalty_number"].count().reset_index()
 
 # Display loyalty card holder counts
 print(df_cards)
 
 # Create pie chart to visualize loyalty card distribution
 plt.pie(
-    "Loyalty Number",
-    labels="Loyalty Card",
+    "loyalty_number",
+    labels="loyalt_card",
     data=df_cards,
     autopct="%1.1f%%",  # Format percentage labels with one decimal place
     colors=palette,  # Use the defined palette for pie chart colors
