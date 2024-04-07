@@ -48,7 +48,7 @@ In these questions it's necessary to remember that a pattern was detected in the
 ![alt text](image-4.png)
 
 
-Almost half of the customers (46.5%) have a Start card, followed by Nova (33.9&) and Aurosa (20.6%). 
+Almost half of the customers (46.5%) have a Start card, followed by Nova (33.9&) and Aurora (20.6%). 
 
 6. How are clients distributed according to their civil status and gender?
 

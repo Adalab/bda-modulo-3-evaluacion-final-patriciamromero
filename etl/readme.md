@@ -3,7 +3,6 @@
 In stage 1, an initial exploration of the DataFrames "Activity" and "Loyalty" was conducted. The types of data in each column, the presence of null values and inconsistencies were observed. The columns "Points Redeemed", "Flights with Companions", "Dollar Cost Points Redeemed", "Salary", "Cancellation Year" and "Cancellation Month" were highlighted as important to review in future steps. Null values were detected in the columns "Salary" and "Cancellation Year/Month". The shape of both DataFrames was verified and descriptive statistics were collected. 
 
 **Main Activity data**:
-
     Columns: 10
     Data type: Numeric (except "Dtype" which is object)
     Null values: None

@@ -1,44 +1,40 @@
 
 # Evaluation mod III
 
-This project was requested after the assessment of the Bootcamp at Adalab for module 3. In this module we've studied the EDA processes, Pandas methods, transform and cleaning methods, visualisations, analysis, ETL and pipeline, and A/B testing. 
-
-
-
+This project was requested due to the evaluation of the Adalab bootcamp for module 3. In this module we've studied the EDA processes, Pandas methods, transformation and cleansing methods, visualisations, analysis, ETL and pipeline, and A/B testing. 
 
 ## Structure
 
-In order to make the information clearer, each exercise has its own carpet with a py-file and a read-me containing the steps taken, the choices made and a brief explanation of the data. These may have some variations depending on the type of exercise and own needs. 
+To make the information clearer, each exercise has its own carpet with a py-file and a read-me containing the steps taken, the choices made and a brief explanation of the data.
 
 
 ## In detail
 
-This repository explores the data provided by an imaginary customer of an airline company. An analysis and research has been carried out to observe their customers' insights. 
+This repository explores the data provided by an imaginary customer of an airline company. An analysis and research has been carried out to observe the insights of their customers. 
 
-Contains the followed folders: 
+Contains the following folders: 
 
-- ab_testing: It holds the python file with the code and a markdown (readme.md) with the main conclussions. 
-- analysys: It hold the code in which there is the data analysis made in order to get the questions provided answered. There is also a markdown incluiding the explanatio of this data and some recommendations for next steps. 
-- etl: sop folder with the files used for each step in the process (extract.py load.py transform_clean.py) load py does not contain any code it is just an aproximation of what steps may be included in it. In main.py there is the main code used for the etl. There is also a readme given further detail in the process. 
-- files: this folder contains two folders (in: the csv given, on: the csv obtained after transforming the data).
-- workspace: contains three jupyter notebooks used to train and practice each stage of the exercice. 
-
+- ab_testing: This contains the Python file with the code and a markdown (readme.md) with the main conclusions. 
+- analysys: It contains the code that analyses the data to answer the questions raised. There is also a markdown with the explanation of this data and some recommendations for the next steps. 
+- etl: sup folder with the files used for each step in the process (extract.py load.py transform_clean.py) load py does not contain any code, it is just an approximation of what steps might be included. In main.py there is the main code used for the etl. There is also a readme which gives further details on the process. 
+- files: this folder contains two folders (in: the given csv, on: the csv obtained after transforming the data).
+- workspace: contains three Jupyter notebooks used for training and practising each stage of the exercise. 
 
 ### Steps
 
-1 - EDA & Data cleansing
+1 - EDA & data cleansing
 
-This was the first approach to the data provided by the client in order to detect errors, patterns,... and to give this data a proper structure to work with. 
+This was the first approach to the data provided by the client in order to detect errors, patterns, etc. and to give this data a proper structure to work with. 
 
-If necessary, the data was cleaned in order to be able to work with it better and with the aim of carrying out a better reacher and analysis of the data so that the right conclusions can be provided to the client. 
+The data was cleaned to make it easier to work with, aiming for a better understanding and analysis of the data in order to provide the client with the right conclusions. 
 
 
 2 - Visualisation and conclusions
 
-In this second stage, the questions raised by the client were answered and some additional and brief side comments were provided to help understand the information. 
+In this second stage, the questions raised by the client were answered and some additional and brief comments were added to help understand the information. 
 
-Some considerations for the future steps were made, as these may help the company to get to know its customers much better and provide them a better service, for example. 
+Some considerations for future steps were made, as these could help the company to get to know its customers much better and to provide them with a better service, for example. 
 
 3- A/B testing 
 
-Finally, an A/B test was performed to explore the level of education of the more frequent travellers and determine if there are any patterns or connections within the education and the flights booked.  
+Finally, an A/B test was carried out to explore the level of education of the more frequent travellers and to see if there were any patterns or correlations between education and flights booked.  
