@@ -1,8 +1,9 @@
 #%%
-from src.stage import extract as e
-from src.stage import transform_clean as t
+from src.etl import extract as e
+from src.etl import transform_clean as t
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 # %%
 activity = e.open_csv("src/files/Customer Flight Activity.csv")
@@ -70,3 +71,4 @@ df_all = activity.merge(loyalty, how='inner', on= "Loyalty Number")
 # %%
 t.standarize_column_names(df_all)
 # %%
+data_merged = pd.read_csv("files/data_merged.csv")
