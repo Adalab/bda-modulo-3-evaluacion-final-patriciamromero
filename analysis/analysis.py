@@ -8,10 +8,11 @@ import matplotlib.pyplot as plt
 
 #%%
 # Define a color palette for consistency
-palette = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+palette="magma"
+
 #%%
 # Read data from CSV file
-data = pd.read_csv("../src/files/data_merged.csv")
+data = pd.read_csv("../files/out/data_merged.csv")
 
 # Show the first few rows of the data
 print(data.head())
@@ -69,10 +70,10 @@ print(df_cards)
 # Create pie chart to visualize loyalty card distribution
 plt.pie(
     "loyalty_number",
-    labels="loyalt_card",
+    labels="loyalty_card",
     data=df_cards,
     autopct="%1.1f%%",  # Format percentage labels with one decimal place
-    colors=palette,  # Use the defined palette for pie chart colors
+    colors=["pink", "royalblue", "salmon"],  # Use the defined palette for pie chart colors
     wedgeprops={"linewidth": 1, "edgecolor": "white"},  # Set border properties
     textprops={"fontsize": 8},  # Set font size for labels
     labeldistance= 0.8,  # Adjust label distance from pie chart
@@ -80,5 +81,34 @@ plt.pie(
     frame=True,  # Display pie chart with a frame
 )
 plt.show()
+
+# %%
+# Import necessary libraries
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create the plot with clear dimensions
+plt.figure(figsize=(10, 6))  # Set figure size for better readability
+
+# Generate a count plot to visualize distributions
+sns.countplot(
+   x="marital_status",  # Specify the variable to group counts by
+   hue="gender",  # Distinguish counts based on gender
+   data=data,  # Provide the dataset containing the data
+   palette=sns.color_palette("magma"),  # Set a visually appealing color scheme
+)
+
+# Add clear and descriptive labels for visual clarity
+plt.title("Clients Distribution by Gender and Marital Status")
+plt.xlabel("Marital Status")
+plt.ylabel("Number of Clients")
+
+# Enhance legend for better interpretation
+plt.legend(title="Gender", title_fontsize=12, loc="upper right")  # Adjust for readability
+
+# Display the generated plot
+plt.show()
+
+
 
 # %%
