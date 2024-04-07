@@ -23,7 +23,7 @@ plt.figure(figsize=(10, 6))
 # Create bar chart to compare flights booked by month and year
 sns.barplot(data=data, x='month', y='flights_booked', hue='year', palette=palette)
 plt.title('Comparassion of flights booked each month years 2017 and 2018')
-plt.xlabel('month')
+plt.xlabel('Month')
 plt.ylabel('Quatinty')
 plt.legend(title='Year')
 plt.show()

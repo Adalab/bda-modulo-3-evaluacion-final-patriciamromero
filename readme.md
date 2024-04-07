@@ -15,7 +15,16 @@ In order to make the information clearer, each exercise has its own carpet with 
 
 This repository explores the data provided by an imaginary customer of an airline company. An analysis and research has been carried out to observe their customers' insights. 
 
-## Steps
+Contains the followed folders: 
+
+- ab_testing: It holds the python file with the code and a markdown (readme.md) with the main conclussions. 
+- analysys: It hold the code in which there is the data analysis made in order to get the questions provided answered. There is also a markdown incluiding the explanatio of this data and some recommendations for next steps. 
+- etl: sop folder with the files used for each step in the process (extract.py load.py transform_clean.py) load py does not contain any code it is just an aproximation of what steps may be included in it. In main.py there is the main code used for the etl. There is also a readme given further detail in the process. 
+- files: this folder contains two folders (in: the csv given, on: the csv obtained after transforming the data).
+- workspace: contains three jupyter notebooks used to train and practice each stage of the exercice. 
+
+
+### Steps
 
 1 - EDA & Data cleansing
 

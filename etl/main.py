@@ -1,6 +1,6 @@
 #%%
-from sop import extract as e
-from sop import transform_clean as t
+from sup import extract as e
+from sup import transform_clean as t
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
