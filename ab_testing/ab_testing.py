@@ -84,14 +84,6 @@ if p_value > alpha:
     print("Data belong to a normal distribution (p-value =", p_value, ")")
 else:
     print("Data do not belong to a normal distribution (p-value =", p_value, ")")
-#%%
 
-# Realizar la prueba
-
-result = mannwhitneyu(df_filtered['education'], df_filtered['flights_booked'], alternative="two-sided")
-
-# Devolver el resultado
-print("Estadístico U:", result.statistic)
-print("p-valor:", result.pvalue)
 
 # %%
