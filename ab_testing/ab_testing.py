@@ -22,6 +22,7 @@ import scipy.stats as stats
 
 from scipy import stats
 from scipy.stats import shapiro, kstest
+from scipy.stats import mannwhitneyu
 
 #%%
 palette="magma"
@@ -80,6 +81,17 @@ p_value = kstest(data["flights_booked"], "norm").pvalue  # Kolmogorov-Smirnov te
 alpha = 0.05
 
 if p_value > alpha:
-    print("Los datos se ajustan a una distribución normal (p-value =", p_value, ")")
+    print("Data belong to a normal distribution (p-value =", p_value, ")")
 else:
-    print("Los datos no se ajustan a una distribución normal (p-value =", p_value, ")")
+    print("Data do not belong to a normal distribution (p-value =", p_value, ")")
+#%%
+
+# Realizar la prueba
+
+result = mannwhitneyu(df_filtered['education'], df_filtered['flights_booked'], alternative="two-sided")
+
+# Devolver el resultado
+print("Estadístico U:", result.statistic)
+print("p-valor:", result.pvalue)
+
+# %%
