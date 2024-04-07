@@ -58,31 +58,34 @@ from scipy.stats import chi2_contingency
 from scipy.stats import ttest_ind
 
 #%%
-data = pd.read_csv("../src/files/data_merged.csv")
+data = pd.read_csv("../files/out/data_merged.csv")
 # %%
 df_filtered = data[["loyalty_number", "flights_booked", "education"]]
 
 # %%
-for category in data["education"].unique():
+
+df_filtered["total_flights"] = df_filtered.groupby('loyalty_number')['flights_booked'].sum()
+#%%
+
+for category in df_filtered["education"].unique():
         
-        df_filtered = data[data["education"] == category]
+        df_cat = df_filtered[df_filtered["education"] == category]
         print(f"Los principales estadísticos de la columna 'Flights Booked' para {category} son: ")
-        print(df_filtered["flights_booked"].describe().T)
+        print(df_filtered["total_flights"].describe().T)
 # %%
-df_filtered["education_level"]= data['education'].apply(lambda x : 'Sup Education' if x in ["Doctor", "Master"] else 'Low Education')
+df_filtered["education_level"] = df_filtered['education'].apply(lambda x: 'Sup Education' if x in ["Doctor", "Master"] else 'Low Education')
+#%%
 # %%
 for col in df_filtered["education_level"].unique():
     print(f"Education level: {col}")
-    print(df_filtered[df_filtered["education_level"] ==  col]["flights_booked"].describe())
+    print(df_filtered[df_filtered["education_level"] ==  col]["total_flights"].describe())
     print("--------------------------------")
 # %%
-sns.barplot(x = "education_level", y = "flights_booked", data = df_filtered, palette = "magma")
+sns.barplot(x = "education_level", y = "total_flights", data = df_filtered, palette = "magma");
 
 # %%
-df_filtered["bookings"] = df_filtered["flights_booked"].apply(lambda num_bookings: "Low Flyer" if num_bookings <= 7 else "High Flyer")
-
-#%%
-df_filtered["bookings"] 
+mean = df_filtered["total_flights"].mean()
+df_filtered["bookings"] = df_filtered["total_flights"].apply(lambda num_bookings: "Low Flyer" if num_bookings <= mean else "High Flyer")
 # %%
 table = pd.crosstab(df_filtered["education_level"], df_filtered["bookings"]) 
 table
@@ -105,10 +108,6 @@ sns.barplot(x=table.index, y="Low Flyer %", data=table, palette=palette, ax=axes
 
 # Gráfico de "High Flyer"
 sns.barplot(x=table.index, y="High Flyer %", data=table, palette=palette, ax=axes[1])
-
-# Añadir puntos con valores numéricos
-#sns.pointplot(x=table.index, y="Low Flyer %", data=table, color='black', ax=axes[0])
-#sns.pointplot(x=table.index, y="High Flyer %", data=table, color='black', ax=axes[1])
 
 # Título principal y etiquetas
 fig.suptitle("Rotación según Satisfacción General")
