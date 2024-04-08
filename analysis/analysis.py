@@ -29,8 +29,10 @@ plt.legend(title='Year')
 plt.show()
 
 #%%
-# Create scatterplot to visualize Points Accumulated vs. Distance
-sns.scatterplot(data["points_accumulated"], data["distance"], palette=palette)
+data_pd= data.groupby(["loyalty_number"])[["points_accumulated", "distance"]].sum()
+data_pd
+#%%
+sns.scatterplot(data_pd["points_accumulated"], data_pd["distance"], palette=palette)
 plt.title("Scatterplot of Points Accumulated vs. Distance")
 plt.xlabel("Points Accumulated")
 plt.ylabel("Distance")
@@ -38,7 +40,10 @@ plt.show()
 
 #%%
 # Create countplot to show distribution of provinces
-sns.countplot(data["province"], palette=palette)
+data_province= pd.DataFrame(data.groupby('province')["loyalty_number"].count())
+type(data_province)
+#%%
+sns.countplot(data_province["province"], palette=palette)
 
 # Rotate province labels for better readability
 plt.xticks(rotation=90)
