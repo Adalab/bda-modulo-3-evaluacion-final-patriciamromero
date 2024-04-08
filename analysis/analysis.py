@@ -6,6 +6,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+import warnings
+warnings.filterwarnings("ignore")
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 #%%
 # Define a color palette for consistency
 palette="magma"
@@ -27,12 +32,8 @@ plt.xlabel('Month')
 plt.ylabel('Quatinty')
 plt.legend(title='Year')
 plt.show()
-
 #%%
-data_pd= data.groupby(["loyalty_number"])[["points_accumulated", "distance"]].sum()
-data_pd
-#%%
-sns.scatterplot(data_pd["points_accumulated"], data_pd["distance"], palette=palette)
+sns.scatterplot(data["points_accumulated"], data["distance"], palette=palette)
 plt.title("Scatterplot of Points Accumulated vs. Distance")
 plt.xlabel("Points Accumulated")
 plt.ylabel("Distance")
@@ -40,10 +41,7 @@ plt.show()
 
 #%%
 # Create countplot to show distribution of provinces
-data_province= pd.DataFrame(data.groupby('province')["loyalty_number"].count())
-type(data_province)
-#%%
-sns.countplot(data_province["province"], palette=palette)
+sns.countplot(data["province"], palette=palette)
 
 # Rotate province labels for better readability
 plt.xticks(rotation=90)
@@ -51,7 +49,7 @@ plt.xticks(rotation=90)
 # Increase font size for labels
 plt.xlabel("Province", fontsize=14)
 plt.ylabel("Count", fontsize=14)
-plt.show()
+plt.show();
 
 #%%
 # Create bar chart to visualize average salary by education level
@@ -88,10 +86,6 @@ plt.pie(
 plt.show()
 
 # %%
-# Import necessary libraries
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 # Create the plot with clear dimensions
 plt.figure(figsize=(10, 6))  # Set figure size for better readability
 
